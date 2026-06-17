@@ -1,16 +1,17 @@
-# TaskFlow — AI-Powered Task Management Portal
+# TaskFlow - AI Powered Task Management Portal
 
-> A full-stack task management application built with **Spring Boot**, **React + Vite + Tailwind CSS**, **PostgreSQL**, **JWT Auth**, **Google Gemini AI**, and a **blockchain-inspired audit trail**.
+> A full-stack task management application built with Spring Boot,React + Vite + Tailwind CSS,PostgreSQL,JWT Auth,Google Gemini AI, and a blockchain-inspired audit trail.
+
+## Screenshots
+<img width="1347" height="592" alt="Screenshot 2026-06-17 190337" src="https://github.com/user-attachments/assets/f54b945b-c30a-452c-9c68-0bfb708a18af" />
+<img width="1014" height="584" alt="Screenshot 2026-06-17 190844" src="https://github.com/user-attachments/assets/82e96764-7632-44c0-a85f-a8f8bfc557f2" />
+<img width="1328" height="587" alt="Screenshot 2026-06-17 190534" src="https://github.com/user-attachments/assets/60a17bf5-5125-41d2-a486-f20dc2eebc8f" />
+<img width="1336" height="593" alt="Screenshot 2026-06-17 190440" src="https://github.com/user-attachments/assets/89395006-4410-4dca-9803-6d85e6569c91" />
+<img width="1331" height="556" alt="Screenshot 2026-06-17 190354" src="https://github.com/user-attachments/assets/c81d0d2e-36e6-429b-be76-a5ff07c9e7ec" />
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots here after running the app.
-
----
-
-## 🏗️ Architecture Overview
+#Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -34,23 +35,23 @@
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### Layered Architecture (Backend)
+#Layered Architecture (Backend)
 
 | Layer | Responsibility |
 |---|---|
-| **Controller** | HTTP request/response, input validation, route mapping |
-| **Service** | Business logic, AI calls, blockchain hashing |
-| **Repository** | Database queries via Spring Data JPA |
-| **Entity** | JPA-managed database table models |
-| **DTO** | API request/response shape, decoupled from entities |
-| **Security** | JWT filter, BCrypt password hashing, Spring Security config |
-| **Exception** | Centralized error handling via `@RestControllerAdvice` |
+| Controller | HTTP request/response, input validation, route mapping |
+| Service| Business logic, AI calls, blockchain hashing |
+| Repository | Database queries via Spring Data JPA |
+| Entity | JPA-managed database table models |
+| DTO | API request/response shape, decoupled from entities |
+| Security | JWT filter, BCrypt password hashing, Spring Security config |
+| Exception | Centralized error handling via `@RestControllerAdvice` |
 
 ---
 
-## 🚀 Tech Stack
+#Tech Stack
 
-### Backend
+#Backend
 | Technology | Purpose |
 |---|---|
 | Java 17 | Language |
@@ -63,7 +64,7 @@
 | SpringDoc OpenAPI | Swagger UI documentation |
 | Lombok | Boilerplate reduction |
 
-### Frontend
+#Frontend
 | Technology | Purpose |
 |---|---|
 | React 18 | UI framework |
@@ -76,19 +77,19 @@
 | React Hot Toast | User notifications |
 | date-fns | Date formatting |
 
-### Database
-- **PostgreSQL** — relational database for users and tasks
+#Database
+- PostgreSQL — relational database for users and tasks
 
-### AI
-- **Google Gemini 1.5 Flash** — task generation & productivity summaries
+#AI
+- Google Gemini 1.5 Flash — task generation & productivity summaries
 
-### DevOps
-- **Docker + Docker Compose** — containerized deployment
-- **Nginx** — serves React build & reverse-proxies API calls
+#DevOps
+- Docker + Docker Compose** — containerized deployment
+- Nginx — serves React build & reverse-proxies API calls
 
 ---
 
-## 📁 Project Structure
+#Project Structure
 
 ```
 taskflow/
@@ -165,7 +166,7 @@ taskflow/
 
 ---
 
-## 📊 Database Schema (ER Diagram)
+#Database Schema (ER Diagram)
 
 ```
 ┌─────────────────────────────┐       ┌─────────────────────────────────┐
@@ -192,15 +193,15 @@ Enums:
 
 ---
 
-## 🔌 API Endpoints
+#API Endpoints
 
-### Authentication (`/api/auth`)
+#Authentication (`/api/auth`)
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
 | `POST` | `/api/auth/register` | ❌ Public | Register new user |
 | `POST` | `/api/auth/login` | ❌ Public | Login, receive JWT |
 
-### Tasks (`/api/tasks`) — all require JWT
+#Tasks (`/api/tasks`) — all require JWT
 | Method | Endpoint | Description |
 |---|---|---|
 | `POST` | `/api/tasks` | Create a task |
@@ -212,36 +213,36 @@ Enums:
 | `PATCH` | `/api/tasks/{id}/status?status=DONE` | Quick status update |
 | `DELETE` | `/api/tasks/{id}` | Delete a task |
 
-### AI Features (`/api/ai`) — all require JWT
+# AI Features (`/api/ai`) — all require JWT
 | Method | Endpoint | Description |
 |---|---|---|
 | `POST` | `/api/ai/generate-task` | Generate task details from title |
 | `GET` | `/api/ai/summary` | Get productivity summary |
 
-### Docs
-- **Swagger UI**: `http://localhost:8080/api/swagger-ui.html`
-- **OpenAPI JSON**: `http://localhost:8080/api/v3/api-docs`
+#Docs
+- Swagger UI: `http://localhost:8080/api/swagger-ui.html`
+- OpenAPI JSON: `http://localhost:8080/api/v3/api-docs`
 
 ---
 
-## 🤖 AI Integration Explanation
+#AI Integration Explanation
 
-### Google Gemini 1.5 Flash API
+> Google Gemini 1.5 Flash API
 
-The app integrates **three AI features** via the Gemini REST API:
+The app integrates three AI features via the Gemini REST API:
 
 #### Feature A — Task Description Generator
-- **Trigger**: User enters a task title on the New Task form and clicks "✨ AI Fill"
-- **Flow**: `title → POST /api/ai/generate-task → Gemini API → JSON response`
-- **Output**: Description, Priority, Estimated Effort, Reasoning
-- **Prompt strategy**: Structured JSON-only prompt with explicit field instructions
+- Trigger: User enters a task title on the New Task form and clicks "✨ AI Fill"
+- Flow: `title → POST /api/ai/generate-task → Gemini API → JSON response`
+- Output: Description, Priority, Estimated Effort, Reasoning
+- Prompt strategy: Structured JSON-only prompt with explicit field instructions
 
-#### Feature B — Productivity Summarizer
-- **Trigger**: User clicks "Generate Summary" on the AI page
-- **Flow**: Fetch all user tasks → build stats → send to Gemini → parse response
-- **Output**: Overall summary, key insight, 3 personalized recommendations
+#Feature B — Productivity Summarizer
+- Trigger: User clicks "Generate Summary" on the AI page
+- Flow: Fetch all user tasks → build stats → send to Gemini → parse response
+- Output: Overall summary, key insight, 3 personalized recommendations
 
-#### Graceful Fallback
+#Graceful Fallback
 If the Gemini API is unavailable (no key / rate limit), both features return a sensible fallback response — the app never crashes due to AI failure.
 
 ```java
@@ -257,9 +258,9 @@ try {
 
 ---
 
-## 🔗 Blockchain Implementation
+#Blockchain Implementation
 
-### Lightweight Immutable Audit Trail
+> Lightweight Immutable Audit Trail
 
 Every task mutation (create / update) generates a **SHA-256 hash** of the task's full state and stores it in the `task_hash` column.
 
@@ -275,7 +276,7 @@ private String buildTaskStateString(Task task) {
 }
 ```
 
-**Why it works like blockchain:**
+> It works like blockchain:
 - Each state change produces a new unique fingerprint
 - The hash is stored alongside the record for verification
 - Any unauthorized modification to `title`, `description`, `status`, or `priority` would produce a different hash
@@ -285,7 +286,7 @@ In a production system, these hashes would be chained (each hash includes the pr
 
 ---
 
-## 🔧 Local Setup
+# Local Setup
 
 ### Prerequisites
 - Java 17+
@@ -294,7 +295,7 @@ In a production system, these hashes would be chained (each hash includes the pr
 - Maven 3.8+
 - (Optional) Docker & Docker Compose
 
-### Option 1: Docker Compose (Recommended)
+#Option 1: Docker Compose (Recommended)
 
 ```bash
 # 1. Clone the repo
@@ -314,7 +315,7 @@ docker-compose up --build
 # Swagger  → http://localhost:8080/api/swagger-ui.html
 ```
 
-### Option 2: Manual Setup
+#Option 2: Manual Setup
 
 **Backend:**
 ```bash
@@ -334,7 +335,7 @@ export GEMINI_API_KEY=your-gemini-api-key
 mvn spring-boot:run
 ```
 
-**Frontend:**
+Frontend:
 ```bash
 cd frontend
 cp .env.example .env.local
@@ -347,9 +348,9 @@ npm run dev
 
 ---
 
-## 🌐 Deployment
+#Deployment
 
-### Frontend → Vercel / Netlify
+#Frontend → Vercel / Netlify
 ```bash
 cd frontend
 npm run build
@@ -357,19 +358,19 @@ npm run build
 # Set env var: VITE_API_URL=https://your-backend-url/api
 ```
 
-### Backend → Render / Railway
+# Backend → Render / Railway
 - Connect your GitHub repo
 - Set build command: `mvn clean package -DskipTests`
 - Set start command: `java -jar target/taskflow-backend-1.0.0.jar`
 - Add environment variables from `.env.example`
 
-### Database → Neon / Supabase / Render
+#Database → Neon / Supabase / Render
 - Create a free PostgreSQL instance
 - Copy the connection URL to `DATABASE_URL`
 
 ---
 
-## 🔐 Security Measures
+#Security Measures
 
 | Concern | Solution |
 |---|---|
@@ -383,7 +384,7 @@ npm run build
 
 ---
 
-## 🧪 Optional Enhancements Implemented
+#Optional Enhancements Implemented
 
 - ✅ **Pagination** — Tasks paginated with `page` and `size` parameters
 - ✅ **Search/Filter** — Keyword search + status filter tabs
@@ -393,7 +394,7 @@ npm run build
 
 ---
 
-## 📝 Assumptions
+# Assumptions
 
 1. The AI API key (Gemini) is provided via environment variable. Without it, AI features use graceful fallback responses — the app remains fully functional.
 2. The blockchain feature is a mock ledger (SHA-256 hashes) rather than an actual on-chain implementation, which is appropriate for the scope of this assignment.
